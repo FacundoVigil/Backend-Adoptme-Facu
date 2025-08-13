@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+import mocksRouter from './routes/mocks.router.js';
 
 import usersRouter from './routes/users.router.js';
 import petsRouter from './routes/pets.router.js';
@@ -13,7 +14,7 @@ const connection = mongoose.connect(`URL DE MONGO`)
 
 app.use(express.json());
 app.use(cookieParser());
-
+app.use('/api/mocks', mocksRouter);
 app.use('/api/users',usersRouter);
 app.use('/api/pets',petsRouter);
 app.use('/api/adoptions',adoptionsRouter);
